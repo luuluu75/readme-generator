@@ -1,7 +1,7 @@
 {
-  "name": "readme-generator",
+  "name": "readme",
   "version": "1.0.0",
-  "description": "generate professional readme.md",
+  "description": "generate readme file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/luuluu75/readme-generator#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "inquirer": "^7.3.3"
   }
 }
