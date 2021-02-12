@@ -8,7 +8,7 @@
    
    *The what, why, and how:* 
    
-   This project an easy and professional way to generate a readme.md file using node.js
+   This project is an easy and professional way to generate a readme.md file using node.js
    ## Table of Contents
    * [Installation](#installation)
    * [Usage](#usage)
