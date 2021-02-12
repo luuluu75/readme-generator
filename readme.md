@@ -45,6 +45,6 @@
 
    ## Project Links
 
-   Github Repository - https://github.com/luuluu75/readme-generator.git
-   Demo Link -  https://youtu.be/jHwI75uDLaQ
-   Sample Readme - "/develop/ExampleREADME.md"
+   * Github Repository - https://github.com/luuluu75/readme-generator.git
+   * Demo Link -  https://youtu.be/jHwI75uDLaQ
+   * Sample Readme - "/develop/ExampleREADME.md"
