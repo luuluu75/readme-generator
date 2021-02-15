@@ -1,19 +1,17 @@
-function generateMarkdown(userResponses, userInfo) {
+function generateMarkdown(userResponses) {
 
    // Generate Table of Contents conditionally based on userResponses
-   let draftToC = `## Table of Contents`;
+   let contentMenu = `## Table of Contents`;
  
-   if (userResponses.installation !== '') { draftToC += `
+   if (userResponses.installation !== '') { contentMenu += `
    * [Installation](#installation)` };
  
-   if (userResponses.usage !== '') { draftToC += `
-   * [Usage](#usage)` };
+   if (userResponses.usage !== '') { contentMenu += `
+   * [Usage](#installation)` };
  
-   if (userResponses.contributing !== '') { draftToC += `
-   * [Contributing](#contributing)` };
+   if (userResponses.contributing !== '') { contentMenu += `
+   * [Contributing](#contribute)` };
  
-   if (userResponses.tests !== '') { draftToC += `
-   * [Tests](#tests)` };
  
  
    // Generate markdown for the top required portions of the README
@@ -32,7 +30,7 @@ function generateMarkdown(userResponses, userInfo) {
    `
  
    // Add Table of Contents to markdown
-   draftMarkdown += draftToC;
+   draftMarkdown += contentMenu;
   
    // Add License section since License is required to Table of Contents
    draftMarkdown += `
@@ -60,40 +58,21 @@ function generateMarkdown(userResponses, userInfo) {
    
    `
    
-   ## Usage 
+   ## Usage
    
-   *Instructions and examples for use:*
-   
-   ${userResponses.usage}`
+   ${userResponses.technology}`
    };
    
    
    // Optional Contributing section
-   if (userResponses.contributing !== '') {
+   if (userResponses.contribute !== '') {
    `
    
-   ## Contributing
-   
-   *If you would like to contribute it, you can follow these guidelines for how to do so.*
+   ## Contribute
    
    ${userResponses.contributing}`
    };
    
- 
-   // Optional Tests section
-   if (userResponses.tests !== '') {
-   
-   draftMarkdown +=
-   `
-   
-   ## Tests
-   
-   *Tests for application and how to run them:*
-   
-   ${userResponses.tests}`
-   };
- 
- 
    // License section is required
    draftMarkdown +=
    `
@@ -103,35 +82,7 @@ function generateMarkdown(userResponses, userInfo) {
    ${userResponses.license}
    `;
  
- 
-   // Questions / About Developer section
-   let draftDev = 
-   `
-   ---
-   
-   ## Questions?
-   
-   ![Developer Profile Picture](${userInfo.avatar_url}) 
-   
-   For any questions, please contact me with the information below:
-  
-   GitHub: [@${userInfo.login}](${userInfo.url})
-   `;
- 
-   // If GitHub email is not null, add to Developer section
-   if (userInfo.email !== null) {
-   
-   draftDev +=
-   `
-   Email: ${userInfo.email}
-   `};
- 
-   // Add developer section to markdown
-   draftMarkdown += draftDev;
- 
    // Return markdown
-   return draftMarkdown;
-   
- }
- 
+   return draftMarkdown; 
+  }
  module.exports = generateMarkdown;
