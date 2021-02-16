@@ -1,25 +1,25 @@
-function generateMarkdown(userResponses, userInfo) {
+function generateMarkdown(userResponses) {
 
    // Generate Table of Contents conditionally based on userResponses
-   let draftToC = `## Table of Contents`;
+   let content = `## Table of Contents`;
  
-   if (userResponses.installation !== '') { draftToC += `
+   if (userResponses.installation !== '') { content += `
    * [Installation](#installation)` };
  
-   if (userResponses.usage !== '') { draftToC += `
+   if (userResponses.usage !== '') { content += `
    * [Usage](#usage)` };
  
-   if (userResponses.contributing !== '') { draftToC += `
+   if (userResponses.contributing !== '') { content += `
    * [Contributing](#contributing)` };
  
-   if (userResponses.tests !== '') { draftToC += `
+   if (userResponses.tests !== '') { content += `
    * [Tests](#tests)` };
  
  
    // Generate markdown for the top required portions of the README
    let draftMarkdown = 
    `# ${userResponses.title}
-   ![Badge for GitHub repo top language](https://img.shields.io/github/languages/top/${userResponses.username}/${userResponses.repo}?style=flat&logo=appveyor) ![Badge for GitHub last commit](https://img.shields.io/github/last-commit/${userResponses.username}/${userResponses.repo}?style=flat&logo=appveyor)
+   ![Badge for GitHub repo top language](https://img.shields.io/github/languages/top?style=flat&logo=appveyor) ![Badge for GitHub last commit](https://img.shields.io/github/last-commit/${userResponses.username}/${userResponses.repo}?style=flat&logo=appveyor)
    
    Check out the badges hosted by [shields.io](https://shields.io/).
    
@@ -32,7 +32,7 @@ function generateMarkdown(userResponses, userInfo) {
    `
  
    // Add Table of Contents to markdown
-   draftMarkdown += draftToC;
+   draftMarkdown += content;
   
    // Add License section since License is required to Table of Contents
    draftMarkdown += `
@@ -54,7 +54,7 @@ function generateMarkdown(userResponses, userInfo) {
    
  
    // Optional Usage section
-   if (userResponses.usage !== '') {
+   if (userResponses.technologies !== '') {
    
    draftMarkdown +=
    
@@ -64,34 +64,9 @@ function generateMarkdown(userResponses, userInfo) {
    
    *Instructions and examples for use:*
    
-   ${userResponses.usage}`
+   ${userResponses.technologies}`
    };
    
-   
-   // Optional Contributing section
-   if (userResponses.contributing !== '') {
-   `
-   
-   ## Contributing
-   
-   *If you would like to contribute it, you can follow these guidelines for how to do so.*
-   
-   ${userResponses.contributing}`
-   };
-   
- 
-   // Optional Tests section
-   if (userResponses.tests !== '') {
-   
-   draftMarkdown +=
-   `
-   
-   ## Tests
-   
-   *Tests for application and how to run them:*
-   
-   ${userResponses.tests}`
-   };
  
  
    // License section is required
@@ -102,32 +77,6 @@ function generateMarkdown(userResponses, userInfo) {
    
    ${userResponses.license}
    `;
- 
- 
-   // Questions / About Developer section
-   let draftDev = 
-   `
-   ---
-   
-   ## Questions?
-   
-   ![Developer Profile Picture](${userInfo.avatar_url}) 
-   
-   For any questions, please contact me with the information below:
-  
-   GitHub: [@${userInfo.login}](${userInfo.url})
-   `;
- 
-   // If GitHub email is not null, add to Developer section
-   if (userInfo.email !== null) {
-   
-   draftDev +=
-   `
-   Email: ${userInfo.email}
-   `};
- 
-   // Add developer section to markdown
-   draftMarkdown += draftDev;
  
    // Return markdown
    return draftMarkdown;
