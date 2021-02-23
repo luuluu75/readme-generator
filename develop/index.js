@@ -1,9 +1,9 @@
-const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
+const path = require('path');
+const inquirer = require('inquirer');
 
-// Internal modules
 const generateMarkdown = require('./utils/generateMarkdown.js');
+
 
 // Inquirer prompts for userResponses
 const questions = [
@@ -11,13 +11,11 @@ const questions = [
         type: 'input',
         message: "What is the title of your project?",
         name: 'title',
-        default: 'Project Title',
     },
     {
         type: 'input',
         message: "Write a description of your project.",
         name: 'description',
-        default: 'Project Description',
     },
     {
         type: 'input',
@@ -44,42 +42,18 @@ const questions = [
         type: 'input',
         message: "What is the name of your GitHub repo?",
         name: 'repo',
-
     },
 ];
 
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err => {
-        if (err) {
-          return console.log(err);
-        }
-      
-        console.log("Success! Your README.md file has been generated")
-    });
+function writeToFile(generateMarkdown, userResponses) {
+    return fs.writeFileSync(path.join(process.cwd(),generateMarkdown), userResponses);
 }
-
-const writeFileAsync = util.promisify(writeToFile);
-
-
-// Main function
-async function init() {
-    try {
-
-        // Prompt Inquirer questions
-        const userResponses = await inquirer.prompt(questions);
-        console.log("Your responses: ", userResponses);
     
-        // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
-        console.log("Generating your README next...")
-        const markdown = generateMarkdown(userResponses);
-        console.log(markdown);
-    
-        // Write markdown to file
-        await writeFileAsync('SampleREADME.md', markdown);
-
-    } catch (error) {
-        console.log(error);
+function init() {
+    inquirer.prompt(questions).then((inquirerResponses) => {
+        console.log("Your readMe is being generated");
+        writeToFile("ReadMe.md", generateMarkdown({ ...inquirerResponses}));
+    });    
     }
-};
 
-init();
+init(); 
