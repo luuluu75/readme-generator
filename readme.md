@@ -33,17 +33,9 @@
    Apache License 2.0
    
    ---
-   
-   ## Questions?
-   
-   ![Developer Profile Picture](https://avatars.githubusercontent.com/u/74235830?v=4) 
-   
-   For any questions, please contact me with the information below:
-  
-   GitHub: [@luuluu75](https://api.github.com/users/luuluu75)
 
    ## Project Links
 
    * Github Repository - https://github.com/luuluu75/readme-generator.git
    * Demo Link -  https://youtu.be/jHwI75uDLaQ
-   * Sample Readme - "/develop/ExampleREADME.md"
+   * Sample Readme - "/develop/SampleREADME.md"
