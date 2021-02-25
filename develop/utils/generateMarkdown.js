@@ -38,7 +38,7 @@ function generateMarkdown(userResponses) {
    
    ## Technologies
    
-   *Steps required to install project and how to get the development environment running:*
+   *The project used the following technologies:*
    
    ${userResponses.technologies}
 
